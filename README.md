@@ -41,3 +41,79 @@ important_slack_reactions:
   reaction: "thumbsup"
 ```
 
+#### Slack scripts
+
+- [important_slack_reactions.py](important_slack_reactions.py)
+  _
+  This script can be used to send reactions on specific messages in specific channels. I recommend using this for humans that require specific attention and confirmations of that you are well and alive.
+  _
+
+#### Configuration options
+
+**slack_token**
+
+Description: _Set your Slack OAuth2 token so that the script can authenticate as your user_
+
+Example: `slack_token: xoxp-abcdef-abcdef-abcdef-abcdef`
+
+**slack_base_url**
+
+Description: _Set the base url for your Slack workspace_
+
+Example: `slack_base_url: https://iwonderwhereiwork.slack.com`
+
+**channel_for_log**
+
+Description: _Where to log the audits and errors. Choose your managers DM channel ID in case you want to be very verbose in your job._
+
+Example: `channel_for_log: DBXYXYXY`
+
+**important_slack_reactions.message_lookup.limit**
+
+Description: _Limit on how many messages back the script shall search for and react upon._
+
+Example: 
+``` yaml
+important_slack_reactions:
+  message_lookup:
+    limit: 10 
+```
+
+**important_slack_reactions.message_lookup.whitelist**
+
+Description: _Define list of what users we react on, only some people demand attention. Not everyone._
+
+Example:
+  
+``` yaml
+important_slack_reactions:
+  message_lookup:
+    whitelist:
+      - GFASDASD
+      - C3412401
+```
+
+**important_slack_reactions.channels**
+
+Description: _Define list of channels we shall look for messages in._
+
+Example:
+
+``` yaml
+important_slack_reactions:
+  channels:
+    - GFASDASD
+    - C3412401
+```
+
+**important_slack_reactions.reaction**
+
+Description: _Define what emoji to use for reaction. Recommended is `thumbsup`, but nothing is stopping you from using `poop`._
+
+Example:
+
+``` yaml
+important_slack_reactions:
+  reaction: "thumbsup"
+```
+
