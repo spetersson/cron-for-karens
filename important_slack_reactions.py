@@ -10,6 +10,7 @@ def load_config(config_path='slack.yaml'):
     return config
 
 def react_on_message(client, config, channel, emoji, timestamp, text):
+    log_text = ""
     try:
         client.reactions_add(
             channel=channel,
@@ -19,13 +20,13 @@ def react_on_message(client, config, channel, emoji, timestamp, text):
         log_text = f"I reacted with :{emoji}: on message: {text} in channel: {config['slack_base_url']}/archives/{channel}"
     except SlackApiError as e:
         error = e.response['error']
-        print(f"error: {error}")
         if error == "already_reacted":
-            log_text = f"I already reacted with :{emoji}: on message: {text} in channel: {config['slack_base_url']}/archives/{channel}"
+            print(f"I already reacted with :{emoji}: on message: {text} in channel: {config['slack_base_url']}/archives/{channel}")
+            pass
         else:
             log_text = f"Failed to react with :{emoji}: on message: {text} due to error: {error}"
-
-    client.chat_postMessage(channel=config['channel_for_log'], text=log_text)
+    if log_text:
+        client.chat_postMessage(channel=config['channel_for_log'], text=log_text)
 
 def get_message(client, config):
     channels = config['important_slack_reactions']['channels']
