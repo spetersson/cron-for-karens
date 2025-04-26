@@ -1,0 +1,14 @@
+---
+# slack_token: "xoxp-blabla"
+# slack_base_url: "https://yourspace.slack.com"
+# channel_for_log: DBLABLA
+# important_slack_reactions:
+#   message_lookup:
+#     limit: 10
+#     whitelist:
+#       - U01TBLA
+#       - U0ADSDS
+#   channels:
+#     - GFASDASD
+#     - C3412401
+#   reaction: "thumbsup"
